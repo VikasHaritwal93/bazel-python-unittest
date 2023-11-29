@@ -1,5 +1,5 @@
 # BUILD
-load("@bazel-python-unittest//python:defs.bzl", "py_test")
+
 
 py_binary(
     name = "sample",
