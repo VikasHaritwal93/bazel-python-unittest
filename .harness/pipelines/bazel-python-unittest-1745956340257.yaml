@@ -1,0 +1,55 @@
+pipeline:
+  identifier: Build_bazel_python_unittest_1745956346194
+  name: Build bazel-python-unittest
+  orgIdentifier: default
+  projectIdentifier: anuragworkspace
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: account.GithubVikas
+        repoName: bazel-python-unittest
+  stages:
+    - stage:
+        identifier: build
+        name: build
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: runlinter
+                  name: run linter
+                  spec:
+                    command: |-
+                      pip install flake8
+                      flake8 --config=.flake8 .
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: runtests
+                  name: run tests
+                  spec:
+                    command: bazel test :*
+                  timeout: ""
+                  type: Run
+              - step:
+                  identifier: dockerbuild
+                  name: docker_build
+                  spec:
+                    caching: true
+                    connectorRef: <+input>
+                    repo: hello/world
+                    tags:
+                      - latest
+                  timeout: ""
+                  type: BuildAndPushDockerRegistry
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        type: CI
