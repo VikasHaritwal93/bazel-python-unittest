@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_bazel_python_unittest_1745956346194-push-trigger-input-set
+  identifier: Build_bazel_python_unittest_1745956346194pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: anuragworkspace
+  pipeline:
+    identifier: Build_bazel_python_unittest_1745956346194
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
