@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_bazel_python_unittest_1745956346194-pr-trigger-input-set
+  identifier: Build_bazel_python_unittest_1745956346194prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: anuragworkspace
+  pipeline:
+    identifier: Build_bazel_python_unittest_1745956346194
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
